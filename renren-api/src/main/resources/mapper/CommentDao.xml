@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.CommentDao">
+    <insert id="insertComment" parameterType="io.renren.entity.Comment">
+        insert into tb_comment(content,user_id,topic_id,created_date) values (#{content},#{userId},#{topicId},#{createdDate})
+    </insert>
+
+
+    <select id="getCommentCount" parameterType="Integer" resultType="Integer">
+        select count(id) from tb_comment where topic_id = #{topicId}
+    </select>
+
+    <select id="getCommentContent" parameterType="Integer" resultType="io.renren.entity.Comment">
+        select * from tb_comment where topic_id = #{topicId}
+    </select>
+
+    <delete id="deleteComment" parameterType="io.renren.entity.Comment">
+        delete from tb_comment where id = #{id}
+    </delete>
+    <!--<select id="selectTopicWithComment" >-->
+    <!--select   from tb_topic a-->
+    <!--LEFT JOIN tb_comment b on a.id = b.topic_id-->
+    <!--</select>-->
+</mapper>

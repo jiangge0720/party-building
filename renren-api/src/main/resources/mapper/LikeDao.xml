@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.LikeDao">
+    <!--<insert id="insertArticle" parameterType="io.renren.entity.Article">-->
+        <!--insert into tb_article(title,content,category,created_by,create_time,update_time,img,collect_count) values (#{title},#{content},#{category},#{createdBy},#{createTime},#{updateTime},#{img},#{collectCount})-->
+    <!--</insert>-->
+
+    <delete id="cancleLike" parameterType="Integer">
+        delete from tb_like where topic_id = #{topicId}
+    </delete>
+
+</mapper>

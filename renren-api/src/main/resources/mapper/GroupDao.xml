@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.GroupDao">
+    <insert id="insertGroup" parameterType="io.renren.entity.Group">
+        insert into tb_group(`name`,`date`,content,dept_id,created_by,created_at,updated_at,image) values (#{name},#{date},#{content},#{deptId},#{createdBy},#{createdAt},#{updatedAt},#{image})
+    </insert>
+
+
+    
+    <!--<select id="selectTopicWithComment" >-->
+    <!--select   from tb_topic a-->
+    <!--LEFT JOIN tb_comment b on a.id = b.topic_id-->
+    <!--</select>-->
+</mapper>

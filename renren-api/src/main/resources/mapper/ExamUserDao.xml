@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.ExamUserDao">
+    <select id="SelectExamWithUser" parameterType="Long" resultType="io.renren.entity.ExamUser">
+        select * from tb_exam_user where user_id = #{userId}
+    </select>
+
+    <insert id="insertExamUser" parameterType="io.renren.entity.ExamUser">
+        insert into tb_exam_user(exam_id,user_id,user_begintime) values (#{examId},#{userId},#{userBegintime})
+    </insert>
+</mapper>

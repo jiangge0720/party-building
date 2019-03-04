@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.dangjian.dao.ArticleDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.dangjian.entity.ArticleEntity" id="articleMap">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="category" column="category"/>
+        <result property="createdBy" column="created_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="commentCount" column="comment_count"/>
+        <result property="img" column="img"/>
+    </resultMap>
+    <resultMap type="io.renren.modules.dangjian.entity.ArticleEntity" id="articleWithCategoryMap">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="category" column="category"/>
+        <result property="createdBy" column="created_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="commentCount" column="comment_count"/>
+        <result property="img" column="img"/>
+        <collection property="categoryEntities" ofType="io.renren.modules.dangjian.entity.CategoryEntity">
+            <result property="id" column="id"/>
+            <result property="name" column="name"/>
+        </collection>
+    </resultMap>
+
+    <select id="findCategory" resultMap="articleMap" parameterType="Long">
+        select tb_article.* from tb_article
+        where tb_article.id = #{articleId}
+    </select>
+
+    <update id="updateArticle"  parameterType="io.renren.modules.dangjian.entity.ArticleEntity">
+        update tb_article set
+        title=#{title},content=#{content},category=#{category},create_time=#{createTime},
+        img=#{img}
+        where
+        id=#{id}
+    </update>
+
+</mapper>

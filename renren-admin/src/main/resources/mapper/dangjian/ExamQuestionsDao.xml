@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.dangjian.dao.ExamQuestionsDao">
+
+    <select id="selectDifficult"  parameterType="Integer" resultType="io.renren.modules.dangjian.entity.ExamQuestions">
+        select * from tb_exam_questions where questions_difficult = #{questionsDifficult}
+    </select>
+
+
+</mapper>

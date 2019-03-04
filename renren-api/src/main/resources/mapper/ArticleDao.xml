@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.ArticleDao">
+    <insert id="insertArticle" parameterType="io.renren.entity.Article">
+        insert into tb_article(title,content,category,created_by,create_time,update_time,img,collect_count) values (#{title},#{content},#{category},#{createdBy},#{createTime},#{updateTime},#{img},#{collectCount})
+    </insert>
+
+
+    <select id="selectArticle" parameterType="Integer" resultType="io.renren.entity.Article">
+        select * from tb_article where id = #{id}
+    </select>
+
+    <!--<select id="selectTopicWithComment" >-->
+    <!--select   from tb_topic a-->
+    <!--LEFT JOIN tb_comment b on a.id = b.topic_id-->
+    <!--</select>-->
+</mapper>

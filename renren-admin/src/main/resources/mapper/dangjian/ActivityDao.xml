@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.dangjian.dao.ActivityDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.dangjian.entity.ActivityEntity" id="activityMap">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="type" column="type"/>
+        <result property="participants" column="participants"/>
+        <result property="begTime" column="beg_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="signDeadlineTime" column="sign_deadline_time"/>
+        <result property="actualEndTime" column="actual_end_time"/>
+        <result property="state" column="state"/>
+        <result property="taskName" column="task_name"/>
+        <result property="taskEndTime" column="task_end_time"/>
+        <result property="taskContent" column="task_content"/>
+        <result property="notificationName" column="notification_name"/>
+        <result property="notificationContent" column="notification_content"/>
+        <result property="createdBy" column="created_by"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+        <result property="enrolment" column="enrolment"/>
+        <result property="taskState" column="taskState"/>
+
+    </resultMap>
+
+    <resultMap type="io.renren.modules.dangjian.entity.ActivityEntity" id="activityWithUserMap">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="type" column="type"/>
+        <result property="participants" column="participants"/>
+        <result property="begTime" column="beg_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="signDeadlineTime" column="sign_deadline_time"/>
+        <result property="actualEndTime" column="actual_end_time"/>
+        <result property="state" column="state"/>
+        <result property="taskName" column="task_name"/>
+        <result property="taskEndTime" column="task_end_time"/>
+        <result property="taskContent" column="task_content"/>
+        <result property="notificationName" column="notification_name"/>
+        <result property="notificationContent" column="notification_content"/>
+        <result property="createdBy" column="created_by"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+        <result property="enrolment" column="enrolment"/>
+        <result property="taskState" column="taskState"/>
+        <collection property="userEntities" ofType="io.renren.modules.dangjian.entity.UserEntity">
+                <id property="id" column="id"/>
+                <result property="xuehao" column="xuehao"/>
+                <result property="name" column="name"/>
+                <result property="sex" column="sex"/>
+                <result property="phone" column="phone"/>
+                <result property="nation" column="nation"/>
+                <result property="birth" column="birth"/>
+                <result property="degree" column="degree"/>
+                <result property="politics" column="politics"/>
+                <result property="password" column="password"/>
+                <result property="nativeplace" column="nativeplace"/>
+                <result property="date" column="date"/>
+                <result property="deptId" column="dept_id"/>
+                <result property="createdBy" column="created_by"/>
+                <result property="createdAt" column="created_at"/>
+                <result property="updatedAt" column="updated_at"/>
+        </collection>
+    </resultMap>
+
+    <select id="findUser" resultMap="activityMap" parameterType="Long">
+        select tb_activity.* from tb_activity
+        where tb_activity.id = #{activityId}
+    </select>
+
+    <update id="updateActivity"  parameterType="io.renren.modules.dangjian.entity.ActivityEntity">
+        update tb_activity set
+        title=#{title},content=#{content},`type`=#{type},participants=#{participants},
+        beg_time=#{begTime},end_time=#{endTime},sign_deadline_time=#{signDeadlineTime},
+        task_name=#{taskName},task_end_time=#{taskEndTime},task_content=#{taskContent},
+        notification_name=#{notificationName},notification_content=#{notificationContent},
+        enrolment=#{enrolment},task_state=#{taskState}
+        where
+        id=#{id}
+    </update>
+
+</mapper>

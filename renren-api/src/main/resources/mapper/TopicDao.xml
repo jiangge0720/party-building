@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.TopicDao">
+    <insert id="insertTopic" parameterType="io.renren.entity.Topic">
+        insert into tb_topic(title,content,created_date,comment_count,group_id,user_id,state,image,like_count,user_name) values (#{title},#{content},#{createdDate},#{commentCount},#{groupId},#{userId},#{state},#{image},#{likeCount},#{userName})
+    </insert>
+
+
+    <delete id="deleteTopic" parameterType="io.renren.entity.Topic">
+        delete from tb_topic where id = #{id}
+    </delete>
+    <!--<select id="selectTopicWithComment" >-->
+    <!--select   from tb_topic a-->
+    <!--LEFT JOIN tb_comment b on a.id = b.topic_id-->
+    <!--</select>-->
+</mapper>
